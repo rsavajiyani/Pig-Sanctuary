@@ -1,3 +1,5 @@
+
+=======
 // *********************************************************************************
 // CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 // *********************************************************************************
@@ -6,7 +8,7 @@
 var Sequelize = require("sequelize");
 
 // Creates mySQL connection using Sequelize
-var sequelize = new Sequelize("sequelize_library", "root", "", {
+var sequelize = new Sequelize("pig_sanctuary_db", "root", "", {
     host: "localhost",
     dialect: "mysql",
     pool: {
@@ -18,3 +20,4 @@ var sequelize = new Sequelize("sequelize_library", "root", "", {
 
 // Exports the connection for other files to use
 module.exports = sequelize;
+
