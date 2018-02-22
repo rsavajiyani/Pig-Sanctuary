@@ -1,23 +1,23 @@
-//test
-var mysql = require('mysql');
-var connection;
 
+=======
+// *********************************************************************************
+// CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
+// *********************************************************************************
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pig_sanctuary_db'
-    });
-};
+// Dependencies
+var Sequelize = require("sequelize");
 
-
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as id: " + connection.threadId);
+// Creates mySQL connection using Sequelize
+var sequelize = new Sequelize("pig_sanctuary_db", "root", "", {
+    host: "localhost",
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    }
 });
 
-module.exports = connection;
+// Exports the connection for other files to use
+module.exports = sequelize;
+
