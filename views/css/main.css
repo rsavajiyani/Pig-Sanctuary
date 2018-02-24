@@ -8,6 +8,10 @@
     border-radius: 15px;
 }
 
+.navbar-default {
+    font-size: 20px;
+}
+
 .main-body {
     background-color: #777A8C;
 }
