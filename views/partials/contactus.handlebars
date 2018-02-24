@@ -30,15 +30,16 @@
                         <label for="emailInput">Email</label>
 						<input type="email" class="form-control" id="emailInput" name="email" placeholder="johndoe@gmail.com" required>
 					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-					</div>
                     <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
-                        <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
+                        <input type="checkbox" class="form-control" id="isVolunteerInput" name="volunteer" value="volunteer">
+                        <label for="isVolunteerInput">Volunteer?</label>
+                    </div>
+                    <div class="form-group">
+                    <textarea class="form-control" type="textarea" id="messageInput" placeholder="Message" maxlength="500" rows="7"></textarea>
+                        {{!-- <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                     --}}
                     </div>
             
-        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+        <button type="button" id="contact-submit-btn" name="submit" class="btn btn-primary pull-right">Submit Form</button>
         </form>
     </div>
 </div>
