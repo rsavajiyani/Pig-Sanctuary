@@ -1,5 +1,6 @@
 .main-container {
     background-color: #FFF;
+    opacity: 0.9;
     color: #919097;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -8,12 +9,16 @@
     border-radius: 15px;
 }
 
+body { 
+    background: url(../images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
 .navbar-default {
     font-size: 20px;
-}
-
-.main-body {
-    background-color: #777A8C;
 }
 
 .width-100 {
