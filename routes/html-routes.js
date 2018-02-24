@@ -24,6 +24,26 @@ module.exports = function (app) {
         res.render("admin", {});
     });
 
+    app.get("/pigs", function (req, res) {
+        res.render("pigpage", {});
+    });
+
+    app.get("/contactus", function (req, res) {
+        res.render("contactus", {});
+    });
+
+    app.get("/ourmission", function (req, res) {
+        res.render("ourmission", {});
+    });
+
+    app.get("/pigcare", function (req, res) {
+        res.render("pigcare", {});
+    });
+
+    app.get("/volunteer", function (req, res) {
+        res.render("volunteer", {});
+    });
+
     app.get("/cms", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/cms.html"));
     });
