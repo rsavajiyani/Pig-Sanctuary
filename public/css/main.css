@@ -1,0 +1,26 @@
+.main-container {
+    background-color: #FFF;
+    color: #919097;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    /* padding: 35px 0 35px 0; */
+    padding: 35px;
+    border-radius: 15px;
+}
+
+.main-body {
+    background-color: #777A8C;
+}
+
+.width-100 {
+    max-width: 100%
+}
+
+.main-footer {
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.user-icon {
+    margin-right: 10px;
+}
