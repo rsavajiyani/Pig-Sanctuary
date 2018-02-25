@@ -46,3 +46,10 @@ body {
 .pig-welcome {
     font-size: 16px;
 }
+
+.adopted-title {
+    font-family: 'Sigmar One', cursive;
+    color: #ADD8E6;
+    font-weight: bold;
+    text-shadow: 2px 2px white;
+}
