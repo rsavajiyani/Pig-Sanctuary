@@ -30,8 +30,20 @@ $(document).ready(function() {
         });
 
         // Send an AJAX POST-request with jQuery
-        // $.post("api/newpig", newPig)
-        // .then(function() {
+        $.ajax({
+            type: "POST",
+            url: "/addpig",
+            data: newPig,
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data){alert(data);},
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+      });
+
+        $.post("api/newpig", newPig)
+        .then(function() {
             
         //     $("#pigTable > tbody").append("<tr><td>" + newPig.pigName + "</td><td>" + newPig.pigAge + "</td><td>" + newPig.pigGender + "</td><td>" newPig.pigImage + "</td><td>" + newPig.pigColor + "</td><td>" + newPig.pigBio + "</td></tr>");
         // });
