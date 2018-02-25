@@ -7,6 +7,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+var db = require("../models");
 
 // Routes
 // =============================================================
@@ -24,8 +25,13 @@ module.exports = function (app) {
         res.render("admin", {});
     });
 
-    app.get("/pigs", function (req, res) {
-        res.render("pigpage", {});
+    app.get("/pigpage", function (req, res) {
+        db.Pigs.findAll()
+            .then(function (dbPig) {
+                console.log(dbPig);
+                var hbsObject = { pig: dbPig };
+                return res.render("pigpage", hbsObject);
+            });
     });
 
     app.get("/contactus", function (req, res) {
@@ -42,15 +48,6 @@ module.exports = function (app) {
 
     app.get("/volunteer", function (req, res) {
         res.render("volunteer", {});
-    });
-
-    app.get("/cms", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/cms.html"));
-    });
-
-    // blog route loads blog.html
-    app.get("/blog", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/blog.html"));
     });
 
 };

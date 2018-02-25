@@ -1,5 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var People = sequelize.define("People", {
+        
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -31,7 +32,14 @@ module.exports = function (sequelize, DataTypes) {
         isVolunteer: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        message: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
-    });
+    },    
+        {
+            timestamps: false,
+        });
     return People;
 };

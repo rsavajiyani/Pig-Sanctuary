@@ -1,1 +1,1 @@
-INSERT INTO pigs(pig_name, pig_gender, pig_color, pig_bio, pig_img, pig_age, isAdopted) VALUES("Baby Girl", "Female", "")
+-- INSERT INTO pigs(pig_name, pig_gender, pig_color, pig_bio, pig_img, pig_age, isAdopted) VALUES("Baby Girl", "Female", "")
