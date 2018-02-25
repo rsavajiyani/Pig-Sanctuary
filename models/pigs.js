@@ -52,3 +52,8 @@ module.exports = function (sequelize, DataTypes) {
         });
     return Pigs;
 };
+
+
+// UNSURE IF THIS SHOULD BE INCLUDED (PR)
+// Sync with DB
+// Pigs.sync();

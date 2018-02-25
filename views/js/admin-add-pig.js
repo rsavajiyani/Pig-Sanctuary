@@ -1,27 +1,46 @@
-$("#pig-submit-btn").on("click", function(event) {
-    event.preventDefault();
+$(document).ready(function() {
 
-    // add new pig    
-    var newPig = {
-        pigName: $("#pigNameInput").val().trim(),
-        pigAge: $("pigAgeInput").val().trim(),
-        pigGender: $("#pigGenderInput").val().trim(),
-        pigImage: $("pigImgUrlInput").val().trim(),
-        pigColor: $("pigColorInput").val().trim(),
-        pigBio: $("pigBioInput").val().trim()
-    };
+    // When submit button is clicked
+    $("#pig-submit-btn").on("click", function(event) {
+        event.preventDefault();
 
-    // send post request
-    $.post("api/new", newPig)
-    .then(function(data) {
-        console.log(data)
+        // Create a new pig object
+        var newPig = {
+            pigName: $("#pigNameInput").val().trim(),
+            pigAge: $("pigAgeInput").val().trim(),
+            pigGender: $("#pigGenderInput").val().trim(),
+            pigImage: $("pigImgUrlInput").val().trim(),
+            pigColor: $("pigColorInput").val().trim(),
+            pigBio: $("pigBioInput").val().trim()
+        };
+
+        console.log(newPig);
+
+        // Send an AJAX POST-request with jQuery
+        $.post("api/newpig", newPig)
+        .then(function() {
+            
+            $("#pigTable > tbody").append("<tr><td>" + newPig.pigName + "</td><td>" + newPig.pigAge + "</td><td>" + newPig.pigGender + "</td><td>" newPig.pigImage + "</td><td>" + newPig.pigColor + "</td><td>" + newPig.pigBio + "</td></tr>");
+        });
+
+        // Empty the new pig values
+        $("pigNameInput").val("");
+        $("pigAgeInput").val("");
+        $("pigGenderInput").val("");
+        $("pigImgUrlInput").val("");
+        $("pigColorInput").val("");
+        $("pigBioInput").val("");
     });
 
-    //empty value
-    $("pigNameInput").val("");
-    $("pigAgeInput").val("");
-    $("pigGenderInput").val("");
-    $("pigImgUrlInput").val("");
-    $("pigColorInput").val("");
-    $("pigBioInput").val("");
+    // Grab all pigs when page loads
+    $.get("api/allpigs", function(data) {
+
+        if (data.length !== 0) {
+            for (var i = 0; i < data.length; i++) {
+                
+                $("#pigTable > tbody").append("<tr><td>" + data[i].pigName + "</td><td>" + data[i].pigAge + "</td><td>" + data[i].pigGender + "</td><td>" + data[i].pigImage + "</td><td>" + data[i].pigColor + "</td><td>" + data[i].pigBio + "</td></tr>");
+                
+            }
+        }
+    });
 });
