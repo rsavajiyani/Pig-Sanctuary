@@ -25,6 +25,18 @@ module.exports = function (app) {
         res.render("admin", {});
     });
 
+     app.get("/adoptedpigs", function (req, res) {
+         db.Pigs.findAll()
+             .then(function (dbPig) {
+                 console.log(dbPig);
+                 var hbsObject = {
+                     pig: dbPig
+                 };
+                 return res.render("adoptedpigs", hbsObject);
+             });
+         
+     });
+
     app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
@@ -36,6 +48,19 @@ module.exports = function (app) {
 
     app.get("/contactus", function (req, res) {
         res.render("contactus", {});
+    });
+
+    app.post('/adopt', function (req, res) {
+        db.Pigs.update({
+            isAdopted: true
+        }, {
+            where: {
+                id: req.body.pig_id
+            }
+        }).then(function (dbPig) {
+            console.log(dbPig);
+            res.redirect("pigpage");
+        })
     });
 
     app.get("/ourmission", function (req, res) {
