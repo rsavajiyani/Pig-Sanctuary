@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    // Which submit button is clicked
+    // When submit button is clicked
     $("#pig-submit-btn").on("click", function(event) {
         event.preventDefault();
 
