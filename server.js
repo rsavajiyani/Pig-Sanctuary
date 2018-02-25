@@ -1,17 +1,17 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var db = require("./models");
-var app = express();
 var path = require("path");
 
+var app = express();
 var PORT = process.env.PORT || 8080;
+var db = require("./models");
 
 // Sets up the Express app to handle data parsing
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 // parse application/json
 app.use(bodyParser.json());
 
@@ -20,14 +20,11 @@ app.use(express.static("./public"));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.set('views', path.join(__dirname, 'views/partials')
+);
 
-// app.engine('html', require('handlebars').__express);
-// app.set('views', __dirname + '/views/*');
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'handlebars');
 
 
 // Routes
