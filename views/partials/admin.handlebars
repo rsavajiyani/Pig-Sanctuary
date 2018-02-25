@@ -19,24 +19,22 @@
 
 <body>
     <div class="row">
-
         <div class="col-lg-12">
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Add Pigs</strong></h3>
                 </div>
                 <div class="panel-body">
-                    <form action="" method="POST" role="form">
+                    <form action="/addpig" method="POST" role="form">
                     
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input type="text" class="form-control" id="pigNameInput" placeholder="">
+                            <input type="text" name="pigName" class="form-control" id="pigNameInput" placeholder="">
                         </div>
 
                         <div class="form-group">
                             <label for="">Age</label>
-                            <select class="form-control" id="pigAgeInput">
+                            <select class="form-control" name="pigAge" id="pigAgeInput">
                                 <option>Age</option>
                                 <option>Toddler</option>
                                 <option>Teenager</option>
@@ -46,7 +44,7 @@
 
                         <div class="form-group">
                             <label for="">Gender</label>
-                            <select class="form-control" id="pigGenderInput">
+                            <select class="form-control" name="pigGender" id="pigGenderInput">
                                 <option>Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -55,12 +53,12 @@
 
                         <div class="form-group">
                             <label for="">Image URL</label>
-                            <input type="text" class="form-control" id="pigImgUrlInput">
+                            <input type="text" class="form-control" name="pigImage" id="pigImgUrlInput">
                         </div>
 
                         <div class="form-group">
                             <label for="">Color</label>
-                            <select class="form-control" id="pigColorInput">
+                            <select class="form-control" name="pigColor" id="pigColorInput">
                                 <option>Color</option>
                                 <option>Pink</option>
                                 <option>White</option>
@@ -73,20 +71,17 @@
 
                         <div class="form-group">
                             <label for="">Bio</label>
-                            <input type="text" class="form-control" id="pigBioInput" placeholder="">
+                            <input type="text" class="form-control" name="pigBio" id="pigBioInput" placeholder="">
                         </div>
 
+                        <button type="submit" class="btn btn-primary btn-md" id="pig-submit-btn">
+                            </span> Add Pig</button>
                     </form>
-                    <br>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary btn-md" id="pig-submit-btn"></span> Add Pig</button>
-                    </div>
                 </div>
             </div>
 
         </div>
     </div>
-
 </body>
 
 </html>
