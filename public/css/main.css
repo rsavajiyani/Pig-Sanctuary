@@ -1,0 +1,48 @@
+.main-container {
+    background-color: white;
+    opacity: 0.9;
+    color: #919097;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    /* padding: 35px 0 35px 0; */
+    padding: 35px;
+    border-radius: 15px;
+}
+
+body { 
+    background: url(../images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+.navbar-default {
+    font-size: 20px;
+}
+
+.width-100 {
+    max-width: 100%
+}
+
+.main-footer {
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.user-icon {
+    margin-right: 10px;
+}
+.pig-care {
+ font-size: 16px;
+}
+
+.pig-header{
+    font-family: 'Sigmar One', cursive;
+    color: #ADD8E6;
+
+}
+
+.pig-welcome {
+    font-size: 16px;
+}
