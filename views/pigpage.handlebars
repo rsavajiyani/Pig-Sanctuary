@@ -15,7 +15,24 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="row">
+        <h3>SAD, UNADOPTED PIGS</h3>
+        {{#each pig}} {{#unless this.isAdopted}}
+            <li>
+                {{this.id}}. {{this.pigName}} <img src ="{{this.pigImage}}">
+            </li>
+        {{/unless}}{{/each}}
+    </div>
+    <div class ="row">
+        <h3>ADOPTED PIGS</h3>
+        {{#each pig}} {{#unless this.isAdopted = false}}
+        <li>
+            {{this.id}}. {{this.pigName}}
+            <img src="{{this.pigImage}}">
+        </li>
+        {{/unless}}{{/each}}
+    </div>
+    {{!-- <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-3 text-center">
                 <div class="thumbnail pig-container">
@@ -109,7 +126,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <select class="form-control" id="gender">
         <option>Gender</option>
