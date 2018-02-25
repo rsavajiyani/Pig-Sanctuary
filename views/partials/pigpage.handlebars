@@ -1,6 +1,7 @@
 {{!-- Pig Search Page. Will Replace Repeated Divs With Handlebars Loop --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
 </head>
+
 <body>
     <div class=>
         <div class="row">
-        {{#each pig}} {{#unless this.isAdopted}}
+            <center>
+                <div class='pig-header'>
+                    <h1>Adopt Us </h1>
+                </div>
+            </center>
+            {{#each pig}} {{#unless this.isAdopted}}
             <div class="col-sm-6 col-md-3 text-center">
-                <center>
-                                <div class='pig-header'>
-                                  <h1>Adopt Us! </h1>
-                                </div>
-                              </center>
                 <div class="thumbnail pig-container">
                     <img src="{{this.pigImage}}" alt=>
                     <div class="caption">
@@ -29,33 +31,35 @@
                         <form method="POST" action="/adopt">
                             <input type="hidden" name="pig_id" type="text" value={{this.id}}>
                             <button type="submit" class="btn btn-default">Adopt Me</button>
-                            {{!-- <a href="/adopt" class="btn btn-primary" role="button">Adopt Me</a> --}}
+                            {{!--
+                            <a href="/adopt" class="btn btn-primary" role="button">Adopt Me</a> --}}
                         </form>
                     </div>
                 </div>
             </div>
-        {{/unless}}{{/each}}
+            {{/unless}}{{/each}}
         </div>
     </div>
     <select class="form-control" id="gender">
         <option>Gender</option>
         <option>Male</option>
         <option>Female</option>
-      </select>
-        
-      <select class="form-control" id="color">
+    </select>
+
+    <select class="form-control" id="color">
         <option>Color</option>
         <option>Pink</option>
         <option>Brown</option>
         <option>Gray</option>
         <option>Black</option>
         <option>Spots</option>
-      </select>
-      <select class="form-control" id="age">
+    </select>
+    <select class="form-control" id="age">
         <option>Age</option>
         <option>Toddler</option>
         <option>Teenager</option>
         <option>Parent</option>
-      </select>
+    </select>
 </body>
+
 </html>
