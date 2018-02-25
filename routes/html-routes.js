@@ -25,7 +25,7 @@ module.exports = function (app) {
         res.render("admin", {});
     });
 
-    app.get("/pigs", function (req, res) {
+    app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
                 console.log(dbPig);

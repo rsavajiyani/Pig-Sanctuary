@@ -15,38 +15,24 @@
 </head>
 
 <body>
-    <div class="row">
-        <h3>SAD, UNADOPTED PIGS</h3>
+    <div class="container">
         {{#each pig}} {{#unless this.isAdopted}}
-            <li>
-                {{this.id}}. {{this.pigName}} <img src ="{{this.pigImage}}">
-            </li>
-        {{/unless}}{{/each}}
-    </div>
-    <div class ="row">
-        <h3>ADOPTED PIGS</h3>
-        {{#each pig}} {{#unless this.isAdopted = false}}
-        <li>
-            {{this.id}}. {{this.pigName}}
-            <img src="{{this.pigImage}}">
-        </li>
-        {{/unless}}{{/each}}
-    </div>
-    {{!-- <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-3 text-center">
                 <div class="thumbnail pig-container">
-                    <img src="http://www.ironwoodpigs.org/images/baby-girl.jpg" alt="Baby Girl">
+                    <img src="{{this.pigImage}}" alt="Baby Girl">
                     <div class="caption">
-                        <h3>Baby Girl</h3>
-                        <div>I am 7 years old. I hate the cold and dark. My coat is black and soft!</div>
+                        <h3>{{this.pigName}}</h3>
+                        <div>{{this.pigBio}}</div>
                         <br/>
                         <a href="#" class="btn btn-primary" role="button">Adopt Me</a>
                     </div>
                 </div>
             </div>
+        </div>
+        {{/unless}}{{/each}}
 
-            <div class="col-sm-6 col-md-3 text-center">
+            {{!-- <div class="col-sm-6 col-md-3 text-center">
                 <div class="thumbnail pig-container">
                     <img src="http://www.ironwoodpigs.org/images/christine-and-karter.jpg" alt="Christine and Karter">
                     <div class="caption">
@@ -125,8 +111,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div> --}}
+        </div> --}}
+    </div>
 
     <select class="form-control" id="gender">
         <option>Gender</option>

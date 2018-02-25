@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var db = require("./models");
 var app = express();
+var path = require("path");
 
 var PORT = process.env.PORT || 8080;
 
@@ -22,6 +23,12 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+// app.engine('html', require('handlebars').__express);
+// app.set('views', __dirname + '/views/*');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'handlebars');
+
 
 // Routes
 // =============================================================
