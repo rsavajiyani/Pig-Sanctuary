@@ -17,6 +17,18 @@ $(document).ready(function() {
         console.log(newPig);
 
         // Send an AJAX POST-request with jQuery
+        $.ajax({
+            type: "POST",
+            url: "/addpig",
+            data: newPig,
+            contentType: "application/json",
+            dataType: "json",
+            success: function(data){alert(data);},
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+      });
+
         $.post("api/newpig", newPig)
         .then(function() {
             
