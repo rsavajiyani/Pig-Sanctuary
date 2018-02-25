@@ -1,8 +1,6 @@
 {{!-- Pig Search Page. Will Replace Repeated Divs With Handlebars Loop --}}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +9,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-
 </head>
-
 <body>
     <div class="container">
         {{#each pig}} {{#unless this.isAdopted}}
@@ -31,7 +27,6 @@
             </div>
         </div>
         {{/unless}}{{/each}}
-
             {{!-- <div class="col-sm-6 col-md-3 text-center">
                 <div class="thumbnail pig-container">
                     <img src="http://www.ironwoodpigs.org/images/christine-and-karter.jpg" alt="Christine and Karter">
@@ -113,7 +108,6 @@
             </div>
         </div> --}}
     </div>
-
     <select class="form-control" id="gender">
         <option>Gender</option>
         <option>Male</option>
@@ -128,15 +122,11 @@
         <option>Black</option>
         <option>Spots</option>
       </select>
-
       <select class="form-control" id="age">
         <option>Age</option>
         <option>Toddler</option>
         <option>Teenager</option>
         <option>Parent</option>
       </select>
-
-
 </body>
-
 </html>
