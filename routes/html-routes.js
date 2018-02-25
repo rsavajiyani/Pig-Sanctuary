@@ -50,6 +50,38 @@ module.exports = function (app) {
         res.render("contactus", {});
     });
 
+    app.post("/addpig", function (req, res) {
+        console.log(req.body);
+        db.Pigs.create({
+            pigName: req.body.pigName,
+            pigAge: req.body.pigAge,
+            pigGender: req.body.pigGender,
+            pigImage: req.body.pigImage,
+            pigColor: req.body.pigColor,
+            pigBio: req.body.pigBio
+        })
+            .then(function (dbPig) {
+                console.log(dbPig);
+                res.json(dbPig);
+            });
+    });
+
+    app.post("/addcontact", function (req, res) {
+        console.log(req.body);
+        db.People.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phone: req.body.phone,
+            email: req.body.email,
+            isVolunteer: req.body.isVolunteer,
+            message: req.body.message
+        })
+            .then(function (dbContact) {
+                console.log(dbContact);
+                res.json(dbContact);
+            });
+    });
+
     app.post('/adopt', function (req, res) {
         db.Pigs.update({
             isAdopted: true
