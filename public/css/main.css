@@ -1,5 +1,5 @@
 .main-container {
-    background-color: #FFF;
+    background-color: white;
     opacity: 0.9;
     color: #919097;
     margin-top: 100px;
@@ -32,4 +32,17 @@ body {
 
 .user-icon {
     margin-right: 10px;
+}
+.pig-care {
+ font-size: 16px;
+}
+
+.pig-header{
+    font-family: 'Sigmar One', cursive;
+    color: #ADD8E6;
+
+}
+
+.pig-welcome {
+    font-size: 16px;
 }

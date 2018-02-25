@@ -1,5 +1,5 @@
 .main-container {
-    background-color: #FFF;
+    background-color: white;
     opacity: 0.9;
     color: #919097;
     margin-top: 100px;
@@ -16,12 +16,9 @@ body {
     -o-background-size: cover;
     background-size: cover;
   }
+  
 .navbar-default {
     font-size: 20px;
-}
-
-.main-body {
-    background-color: #777A8C;
 }
 
 .width-100 {
@@ -35,4 +32,13 @@ body {
 
 .user-icon {
     margin-right: 10px;
+}
+.pig-care {
+ font-size: 16px;
+}
+
+.pig-header{
+    font-family: 'Sigmar One', cursive;
+    color: #ADD8E6;
+
 }
