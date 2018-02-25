@@ -37,6 +37,18 @@ module.exports = function (app) {
          
      });
 
+    app.get("/viewcontacts", function (req, res) {
+        db.People.findAll()
+            .then(function (dbContact) {
+                console.log(dbContact);
+                var hbsObject = {
+                    person: dbContact
+                };
+                return res.render("viewcontacts", hbsObject);
+            });
+
+    });
+
     app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
