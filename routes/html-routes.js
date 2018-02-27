@@ -110,8 +110,12 @@ module.exports = function (app) {
         })
             .then(function (dbContact) {
                 console.log(dbContact);
-                res.redirect("/")
+                res.redirect("confirmation")
             });
+    });
+
+    app.get('/confirmation', function (req, res) {
+        res.render("confirmation.handlebars", {});
     });
 
     app.post('/adopt', function (req, res) {
