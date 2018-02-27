@@ -30,7 +30,7 @@
                         <br/>
                         <form method="POST" action="/adopt">
                             <input type="hidden" name="pig_id" type="text" value={{this.id}}>
-                            <button type="submit" class="btn btn-default">Adopt Me</button>
+                            <button type="submit" class="btn btn-primary">Adopt Me</button>
                             {{!--
                             <a href="/adopt" class="btn btn-primary" role="button">Adopt Me</a> --}}
                         </form>
@@ -40,26 +40,28 @@
             {{/unless}}{{/each}}
         </div>
     </div>
-    <select class="form-control" id="gender">
-        <option>Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-    </select>
-
-    <select class="form-control" id="color">
-        <option>Color</option>
-        <option>Pink</option>
-        <option>Brown</option>
-        <option>Gray</option>
-        <option>Black</option>
-        <option>Spots</option>
-    </select>
-    <select class="form-control" id="age">
-        <option>Age</option>
-        <option>Toddler</option>
-        <option>Teenager</option>
-        <option>Parent</option>
-    </select>
+    <form method="GET" action="/search"></form>
+        <select name="pigGender" id="pigGender">
+            <option>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <select name="pigColor" id="pigColor">
+            <option>Color</option>
+            <option>Pink</option>
+            <option>Brown</option>
+            <option>Gray</option>
+            <option>Black</option>
+            <option>Spots</option>
+        </select>
+        <select name="pigAge" id="pigAge">
+            <option>Age</option>
+            <option>Toddler</option>
+            <option>Teenager</option>
+            <option>Parent</option>
+        </select>
+        <input type="submit" class="btn btn-primary"></input>
+    </form>
 </body>
 
 </html>
