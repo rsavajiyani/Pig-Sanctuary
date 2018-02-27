@@ -34,7 +34,7 @@ module.exports = function (app) {
     });
 
     app.delete("/deletepig/:id", function (req, res) {
-        // We just have to specify which todo we want to destroy with "where"
+        // We just have to specify which pig we want to destroy with "where"
         db.Pigs.destroy({
             where: {
                 id: req.params.pig_id
@@ -110,7 +110,6 @@ module.exports = function (app) {
         })
             .then(function (dbContact) {
                 console.log(dbContact);
-                alert("")
                 res.redirect("/")
             });
     });
@@ -156,7 +155,6 @@ module.exports = function (app) {
     });
 
     app.get('/search', function (req, res) {
-        alert('you clicked the submit button');
         console.log("search route hit");
         db.Pigs.findAll({
             where: {
