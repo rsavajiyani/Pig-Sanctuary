@@ -68,6 +68,7 @@
                     <th>Pig Color</th>
                     <th>Pig Bio</th>
                     <th>Pig Adopted</th>
+                    <th>Delete Pig</th>
                 </tr>
                 {{#each pig}}
                     <tr>
@@ -79,6 +80,12 @@
                         <td>{{this.pigColor}}</td>
                         <td>{{this.pigBio}}</td>
                         <td>{{this.isAdopted}}</td>
+                        <td>
+                            <form method="POST" action="/deletepig">
+                                <input type="hidden" name="pig_id" type="text" value={{this.id}}>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 {{/each}}
             </table>
