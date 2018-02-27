@@ -33,14 +33,16 @@ module.exports = function (app) {
        
     });
 
-    app.delete("/deletepig/:id", function (req, res) {
+    app.delete("/deletepig", function (req, res) {
         // We just have to specify which pig we want to destroy with "where"
+        console.log("delete route hit");
+        console.log(req);
         db.Pigs.destroy({
             where: {
-                id: req.params.pig_id
+                id: req.body.pig_id
             }
         }).then(function (dbPig) {
-            res.json(dbPig);
+            res.redirect("/admin");
         });
     });
 

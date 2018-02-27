@@ -81,9 +81,9 @@
                         <td>{{this.pigBio}}</td>
                         <td>{{this.isAdopted}}</td>
                         <td>
-                            <form method="POST" action="/deletepig">
-                                <input type="hidden" name="pig_id" type="text" value={{this.id}}>
-                                <button type="submit" class="btn btn-primary">Delete</button>
+                            <form method="POST" action="/deletepig?_method=DELETE">
+                                <input type="hidden"  type="text">
+                                <button type="submit" name="pig_id" value={{this.id}} class="btn btn-primary">Delete</button>
                             </form>
                         </td>
                     </tr>
