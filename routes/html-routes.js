@@ -22,7 +22,15 @@ module.exports = function (app) {
 
     // admin route loads admin.handlebars
     app.get("/admin", function (req, res) {
-        res.render("admin", {});
+        db.Pigs.findAll()
+            .then(function (dbPig) {
+                console.log(dbPig);
+                var hbsObject = {
+                    pig: dbPig
+                };
+                return res.render("admin", hbsObject);
+            });
+       
     });
 
      app.get("/adoptedpigs", function (req, res) {
@@ -37,17 +45,6 @@ module.exports = function (app) {
          
      });
 
-    app.get("/viewpigs", function (req, res) {
-        db.Pigs.findAll()
-            .then(function (dbPig) {
-                console.log(dbPig);
-                var hbsObject = {
-                    pig: dbPig
-                };
-                return res.render("viewpigs", hbsObject);
-            });
-
-    });
 
     app.get("/viewcontacts", function (req, res) {
         db.People.findAll()
@@ -104,7 +101,8 @@ module.exports = function (app) {
         })
             .then(function (dbContact) {
                 console.log(dbContact);
-                res.json(dbContact);
+                // Add acknowledge i.e. alert("Thank you for contacting us. Someone will contact you within 72 hours.");
+                res.redirect("/");
             });
     });
 
