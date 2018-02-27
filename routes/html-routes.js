@@ -24,7 +24,7 @@ module.exports = function (app) {
     app.get("/admin", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
-                console.log(dbPig);
+                // console.log(dbPig);
                 var hbsObject = {
                     pig: dbPig
                 };
@@ -35,8 +35,8 @@ module.exports = function (app) {
 
     app.delete("/deletepig", function (req, res) {
         // We just have to specify which pig we want to destroy with "where"
-        console.log("delete route hit");
-        console.log(req);
+        // console.log("delete route hit");
+        // console.log(req);
         db.Pigs.destroy({
             where: {
                 id: req.body.pig_id
@@ -49,7 +49,7 @@ module.exports = function (app) {
      app.get("/adoptedpigs", function (req, res) {
          db.Pigs.findAll()
              .then(function (dbPig) {
-                 console.log(dbPig);
+                //  console.log(dbPig);
                  var hbsObject = {
                      pig: dbPig
                  };
@@ -61,7 +61,7 @@ module.exports = function (app) {
     app.get("/viewcontacts", function (req, res) {
         db.People.findAll()
             .then(function (dbContact) {
-                console.log(dbContact);
+                // console.log(dbContact);
                 var hbsObject = {
                     person: dbContact
                 };
@@ -73,7 +73,7 @@ module.exports = function (app) {
     app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
-                console.log(dbPig);
+                // console.log(dbPig);
                 var hbsObject = { pig: dbPig };
                 return res.render("pigpage", hbsObject);
             });
@@ -84,7 +84,7 @@ module.exports = function (app) {
     });
 
     app.post("/addpig", function (req, res) {
-        console.log(req.body);
+        // console.log(req.body);
         db.Pigs.create({
             pigName: req.body.pigName,
             pigAge: req.body.pigAge,
@@ -94,7 +94,7 @@ module.exports = function (app) {
             pigBio: req.body.pigBio
         })
             .then(function (dbPig) {
-                console.log(dbPig);
+                // console.log(dbPig);
                 // res.json(dbPig);
                 res.redirect("admin");
             });
@@ -139,7 +139,7 @@ module.exports = function (app) {
                 id: req.body.pig_id
             }
         }).then(function (dbPig) {
-            console.log(dbPig);
+            // console.log(dbPig);
             var hbsObject = { pig: dbPig };
             return res.render("adoptcontact", hbsObject);
     })
@@ -160,17 +160,14 @@ module.exports = function (app) {
             })
     });
 
-    app.get('/search', function (req, res) {
+    app.post('/search', function (req, res) {
         console.log("search route hit");
+        console.log(req.body);
         db.Pigs.findAll({
-            where: {
-                pigAge: req.body.pigAge,
-                pigGender: req.body.pigGender,
-                pigColor: req.body.pigColor
-            }
+            where: req.body
         })
             .then(function (dbPig) {
-                console.log(dbPig);
+                // console.log(dbPig);
                 var hbsObject = {
                     pig: dbPig
                 };

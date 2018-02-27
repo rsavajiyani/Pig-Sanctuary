@@ -38,13 +38,15 @@
             {{/unless}}{{/each}}
         </div>
     </div>
-    <form method="GET" action="/search"></form>
-        <select name="pigGender" id="pigGender">
+    <form method="POST" action="/search">
+        <select name="pigGender" default=null id="pigGender">
+            <option disabled selected value>select an option</option>
             <option>Gender</option>
-            <option>Male</option>
-            <option>Female</option>
+            <option>M</option>
+            <option>F</option>
         </select>
         <select name="pigColor" id="pigColor">
+            <option disabled selected value>select an option</option>
             <option>Color</option>
             <option>Pink</option>
             <option>Brown</option>
@@ -53,13 +55,19 @@
             <option>Spots</option>
         </select>
         <select name="pigAge" id="pigAge">
+            <option disabled selected value>select an option</option>
             <option>Age</option>
             <option>Toddler</option>
             <option>Teenager</option>
             <option>Parent</option>
         </select>
-        <input type="submit" class="btn btn-primary"></input>
+        <button type="submit" onclick="clickFunction()" class="btn btn-primary">Search</button>
     </form>
+    <script>
+            function clickFunction() {
+                console.log("clicked");
+            }
+    </script>
 </body>
 
 </html>
