@@ -128,6 +128,18 @@ module.exports = function (app) {
         })
     });
 
+    app.post('/adoptcontact', function (req, res) {
+        db.Pigs.findAll({
+            where: {
+                id: req.body.pig_id
+            }
+        }).then(function (dbPig) {
+            console.log(dbPig);
+            var hbsObject = { pig: dbPig };
+            return res.render("adoptcontact", hbsObject);
+    })
+});
+
     app.post('/contact', function (req, res) {
         console.log('contact route hit');
         db.People.update({
