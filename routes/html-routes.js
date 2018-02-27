@@ -37,6 +37,18 @@ module.exports = function (app) {
          
      });
 
+    app.get("/viewpigs", function (req, res) {
+        db.Pigs.findAll()
+            .then(function (dbPig) {
+                console.log(dbPig);
+                var hbsObject = {
+                    pig: dbPig
+                };
+                return res.render("viewpigs", hbsObject);
+            });
+
+    });
+
     app.get("/viewcontacts", function (req, res) {
         db.People.findAll()
             .then(function (dbContact) {
@@ -48,6 +60,8 @@ module.exports = function (app) {
             });
 
     });
+
+    
 
     app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
@@ -105,6 +119,40 @@ module.exports = function (app) {
             console.log(dbPig);
             res.redirect("pigpage");
         })
+    });
+
+    app.post('/contact', function (req, res) {
+        console.log('contact route hit');
+        db.People.update({
+            contacted: true
+        }, {
+                where: {
+                    id: req.body.contact_id
+                }
+            }).then(function (dbContact) {
+
+                console.log(dbContact);
+                res.redirect("viewcontacts");
+            })
+    });
+
+    app.get('/search', function (req, res) {
+        alert('you clicked the submit button');
+        console.log("search route hit");
+        db.Pigs.findAll({
+            where: {
+                pigAge: req.body.pigAge,
+                pigGender: req.body.pigGender,
+                pigColor: req.body.pigColor
+            }
+        })
+            .then(function (dbPig) {
+                console.log(dbPig);
+                var hbsObject = {
+                    pig: dbPig
+                };
+                return res.render("pigpage", hbsObject);
+            });
     });
 
     app.get("/ourmission", function (req, res) {
