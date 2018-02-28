@@ -24,22 +24,25 @@
                                 <input type="email" name="email" class="form-control" id="emailInput" name="email" placeholder="johndoe@gmail.com" required>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="isVolunteer" class="form-control" id="isVolunteerInput"  value="1">
+                                <input type="checkbox" name="isVolunteer" class="form-control" id="isVolunteerInput" value="1">
                                 <label for="isVolunteerInput">Check here if you interested in volunteering.</label>
                             </div>
+                            {{#each pig}}
                             <div class="form-group">
-                                <textarea class="form-control" name="message" type="textarea" id="messageInput" placeholder="Message" maxlength="500" rows="7"></textarea> {{!--
+                                <input class="form-control" name="message" type="textarea" id="messageInput" placeholder="Message" maxlength="500" rows="7" value="Hello! I am interested in adopting {{this.pigName}}."></input> 
+                                
+                                {{!--
                                 <span class="help-block">
                                     <p id="characterLeft" class="help-block ">You have reached the limit</p>
                                 </span> --}}
                             </div>
+                            {{/each}}
 
-                            <button type="submit" id="contact-submit-btn"  class="btn btn-primary pull-right">Submit Form</button>
+                            <button type="submit" id="contact-submit-btn" class="btn btn-primary pull-right">Submit Form</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 </body>

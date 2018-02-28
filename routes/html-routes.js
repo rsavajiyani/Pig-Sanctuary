@@ -22,13 +22,35 @@ module.exports = function (app) {
 
     // admin route loads admin.handlebars
     app.get("/admin", function (req, res) {
-        res.render("admin", {});
+        db.Pigs.findAll()
+            .then(function (dbPig) {
+
+                // console.log(dbPig);
+
+                var hbsObject = {
+                    pig: dbPig
+                };
+                return res.render("admin", hbsObject);
+            });
+    });
+
+    app.delete("/deletepig", function (req, res) {
+        // We just have to specify which pig we want to destroy with "where"
+        // console.log("delete route hit");
+        // console.log(req);
+        db.Pigs.destroy({
+            where: {
+                id: req.body.pig_id
+            }
+        }).then(function (dbPig) {
+            res.redirect("/admin");
+        });
     });
 
      app.get("/adoptedpigs", function (req, res) {
          db.Pigs.findAll()
              .then(function (dbPig) {
-                 console.log(dbPig);
+                //  console.log(dbPig);
                  var hbsObject = {
                      pig: dbPig
                  };
@@ -37,10 +59,21 @@ module.exports = function (app) {
          
      });
 
+    app.get("/viewcontacts", function (req, res) {
+        db.People.findAll()
+            .then(function (dbContact) {
+                // console.log(dbContact);
+                var hbsObject = {
+                    person: dbContact
+                };
+                return res.render("viewcontacts", hbsObject);
+            });
+    });
+
     app.get("/pigpage", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
-                console.log(dbPig);
+                // console.log(dbPig);
                 var hbsObject = { pig: dbPig };
                 return res.render("pigpage", hbsObject);
             });
@@ -51,7 +84,7 @@ module.exports = function (app) {
     });
 
     app.post("/addpig", function (req, res) {
-        console.log(req.body);
+        // console.log(req.body);
         db.Pigs.create({
             pigName: req.body.pigName,
             pigAge: req.body.pigAge,
@@ -61,8 +94,9 @@ module.exports = function (app) {
             pigBio: req.body.pigBio
         })
             .then(function (dbPig) {
-                console.log(dbPig);
-                res.json(dbPig);
+                // console.log(dbPig);
+                // res.json(dbPig);
+                res.redirect("admin");
             });
     });
 
@@ -78,8 +112,14 @@ module.exports = function (app) {
         })
             .then(function (dbContact) {
                 console.log(dbContact);
-                res.json(dbContact);
+
+                res.redirect("confirmation")
+
             });
+    });
+
+    app.get('/confirmation', function (req, res) {
+        res.render("confirmation.handlebars", {});
     });
 
     app.post('/adopt', function (req, res) {
@@ -93,6 +133,48 @@ module.exports = function (app) {
             console.log(dbPig);
             res.redirect("pigpage");
         })
+    });
+
+    app.post('/adoptcontact', function (req, res) {
+        db.Pigs.findAll({
+            where: {
+                id: req.body.pig_id
+            }
+        }).then(function (dbPig) {
+            // console.log(dbPig);
+            var hbsObject = { pig: dbPig };
+            return res.render("adoptcontact", hbsObject);
+    })
+});
+
+    app.post('/contact', function (req, res) {
+        console.log('contact route hit');
+        db.People.update({
+            contacted: true
+        }, {
+                where: {
+                    id: req.body.contact_id
+                }
+            }).then(function (dbContact) {
+
+                console.log(dbContact);
+                res.redirect("viewcontacts");
+            })
+    });
+
+    app.post('/search', function (req, res) {
+        console.log("search route hit");
+        console.log(req.body);
+        db.Pigs.findAll({
+            where: req.body
+        })
+            .then(function (dbPig) {
+                // console.log(dbPig);
+                var hbsObject = {
+                    pig: dbPig
+                };
+                res.render("pigpage", hbsObject);
+            });
     });
 
     app.get("/ourmission", function (req, res) {

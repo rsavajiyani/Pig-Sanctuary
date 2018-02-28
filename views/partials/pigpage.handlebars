@@ -26,13 +26,11 @@
                     <img src="{{this.pigImage}}" alt=>
                     <div class="caption">
                         <h3>{{this.pigName}}</h3>
-                        <div>{{this.pigBio}}</div>
+                        <div class="bio">{{this.pigBio}}</div>
                         <br/>
-                        <form method="POST" action="/adopt">
+                        <form method="POST" action="/adoptcontact">
                             <input type="hidden" name="pig_id" type="text" value={{this.id}}>
-                            <button type="submit" class="btn btn-default">Adopt Me</button>
-                            {{!--
-                            <a href="/adopt" class="btn btn-primary" role="button">Adopt Me</a> --}}
+                            <button type="submit" class="btn btn-primary">Adopt Me</button>
                         </form>
                     </div>
                 </div>
@@ -40,26 +38,49 @@
             {{/unless}}{{/each}}
         </div>
     </div>
-    <select class="form-control" id="gender">
-        <option>Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-    </select>
+    <form method="POST" action="/search">
+        <select name="pigGender" id="pigGender">
+            <option disabled selected value>select an option</option>
+            <option>Gender</option>
+            <option>M</option>
+            <option>F</option>
+        </select>
+        <select name="pigColor" id="pigColor">
+            <option disabled selected value>select an option</option>
+            <option>Color</option>
+            <option>Pink</option>
+            <option>Brown</option>
+            <option>Gray</option>
+            <option>Black</option>
+            <option>Spots</option>
+        </select>
+        <select name="pigAge" id="pigAge">
+            <option disabled selected value>select an option</option>
+            <option>Age</option>
+            <option>Toddler</option>
+            <option>Teenager</option>
+            <option>Parent</option>
+        </select>
+        <button type="submit" onClick="dropdownValidation()" class="btn btn-primary">Search</button>
+    </form>
+    <script>
+            function dropdownValidation() {
+                var pigGender = document.getElementById('pigGender').value;
+                var pigAge = document.getElementById('pigAge').value;
+                var pigColor = document.getElementById('pigColor').value;
+                console.log("onclick function run");
+                console.log(pigGender, pigAge, pigColor);
 
-    <select class="form-control" id="color">
-        <option>Color</option>
-        <option>Pink</option>
-        <option>Brown</option>
-        <option>Gray</option>
-        <option>Black</option>
-        <option>Spots</option>
-    </select>
-    <select class="form-control" id="age">
-        <option>Age</option>
-        <option>Toddler</option>
-        <option>Teenager</option>
-        <option>Parent</option>
-    </select>
+                
+                if(pigGender == "" && pigAge == "" && pigColor == "") {
+                    alert("no values selected");
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+    </script>
 </body>
 
 </html>
