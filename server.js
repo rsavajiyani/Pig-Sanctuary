@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var methodOverride = require("method-override");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -14,6 +15,12 @@ app.use(bodyParser.urlencoded({
 
 // parse application/json
 app.use(bodyParser.json());
+
+
+app.use(methodOverride('_method'));
+app.use(methodOverride('X-HTTP-Method'));          // Microsoft
+app.use(methodOverride('X-HTTP-Method-Override')); // Google/GData
+app.use(methodOverride('X-Method-Override'));      // IBM
 
 // Static directory to be served
 app.use(express.static("./public"));
