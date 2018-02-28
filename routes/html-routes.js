@@ -171,7 +171,7 @@ module.exports = function (app) {
                 var hbsObject = {
                     pig: dbPig
                 };
-                return res.render("pigpage", hbsObject);
+                res.render("pigpage", hbsObject);
             });
     });
 
