@@ -26,13 +26,14 @@ module.exports = function (app) {
     app.get("/admin", function (req, res) {
         db.Pigs.findAll()
             .then(function (dbPig) {
+
                 // console.log(dbPig);
+
                 var hbsObject = {
                     pig: dbPig
                 };
                 return res.render("admin", hbsObject);
             });
-       
     });
 
     app.delete("/deletepig", function (req, res) {
@@ -69,7 +70,6 @@ module.exports = function (app) {
                 };
                 return res.render("viewcontacts", hbsObject);
             });
-
     });
 
     app.get("/pigpage", function (req, res) {
@@ -114,7 +114,9 @@ module.exports = function (app) {
         })
             .then(function (dbContact) {
                 console.log(dbContact);
+
                 res.redirect("confirmation")
+
             });
     });
 
