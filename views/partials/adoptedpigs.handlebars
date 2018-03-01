@@ -7,12 +7,12 @@
                 </div>
             </center>
             {{#each pig}} {{#if this.isAdopted}}
-            <div class="col-sm-6 col-md-3 text-center">
+            <div class="col-sm-6 col-md-3 text-center" class="pigCard">
                 <div class="thumbnail pig-container">
                     <img src="{{this.pigImage}}" alt=>
                     <div class="caption">
                         <h3>{{this.pigName}}</h3>
-                        <div>{{this.pigBio}}</div>
+                        <div class = "bio">{{this.pigBio}}</div>
                         <br/>
                     </div>
                 </div>

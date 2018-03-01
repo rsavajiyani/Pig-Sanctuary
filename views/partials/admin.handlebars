@@ -6,7 +6,7 @@
                     <h3 class="panel-title"><strong>Add Pigs</strong></h3>
                 </div>
                 <div class="panel-body">
-                    <form action="/addpig" method="POST" role="form">
+                    <form action="/addpig" id = "addPigForm" method="POST" role="form">
                     
                         <div class="form-group">
                             <label for="">Name</label>
@@ -69,6 +69,7 @@
                     <th>Pig Bio</th>
                     <th>Pig Adopted</th>
                     <th>Delete Pig</th>
+                    <th>Adopt Out Pig</th>
                 </tr>
                 {{#each pig}}
                     <tr>
@@ -81,9 +82,15 @@
                         <td>{{this.pigBio}}</td>
                         <td>{{this.isAdopted}}</td>
                         <td>
-                            <form method="POST" action="/deletepig?_method=DELETE">
+                            <form method="POST" onsubmit = 'swal("Good job!", "You clicked the button!", "success");' action="/deletepig?_method=DELETE">
                                 <input type="hidden"  type="text">
                                 <button type="submit" name="pig_id" value={{this.id}} class="btn btn-primary">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="/adopt">
+                                <input type="hidden" name="pig_id" type="text" value={{this.id}}>
+                                <button type="submit" class="btn btn-primary">Adopt</button>
                             </form>
                         </td>
                     </tr>
@@ -97,4 +104,14 @@
             <p><a href="/pigpage">Pig Page</a> | <a href="/viewcontacts">Contact/Volunteer List</a></p>
         </div>
     </div>
+
+    <script>
+        $('#addPigForm').one('submit', function(e) {
+            e.preventDefault();
+            swal("Good Job!", "You Added The Pig!", "success").then(() => {
+                console.log($('#addPigForm'));
+                $('#addPigForm').submit();
+            })    
+        })
+    </script>
 </body>
