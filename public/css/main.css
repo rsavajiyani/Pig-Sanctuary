@@ -9,14 +9,14 @@
     border-radius: 15px;
 }
 
-body { 
-    background: url(../images/bg.jpg) no-repeat center center fixed; 
+body {
+    background: url(../images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
-  
+}
+
 .navbar-default {
     font-size: 20px;
 }
@@ -33,19 +33,19 @@ body {
 .user-icon {
     margin-right: 10px;
 }
+
 .pig-care {
- font-size: 16px;
+    font-size: 16px;
 }
 
-.pig-header{
+.pig-header {
     font-family: 'Sigmar One', cursive;
     color: #ADD8E6;
     text-shadow: 2px 2px #4682B4;
-
 }
 
 .pig-welcome {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .adopted-title {
@@ -55,7 +55,7 @@ body {
     text-shadow: 2px 2px white;
 }
 
-.welcome-header{
+.welcome-header {
     font-family: 'Sigmar One', cursive;
     color: #ADD8E6;
     font-weight: bold;
@@ -66,6 +66,7 @@ body {
 .volunteer {
     font-size: 16px
 }
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -85,3 +86,10 @@ div.bio {
     min-height: 100px;
     max-height: 100px;
 }
+<<<<<<< HEAD
+
+.main-footer{
+    font-size: 14px;
+}
+=======
+>>>>>>> test

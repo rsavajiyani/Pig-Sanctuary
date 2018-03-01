@@ -8,8 +8,12 @@
 // =============================================================
 var path = require("path");
 var db = require("../models");
+<<<<<<< HEAD
+var validatePhoneNumber = require("./validator");
+=======
 // import swal from 'sweetalert';
 
+>>>>>>> test
 
 // Routes
 // =============================================================
@@ -103,6 +107,26 @@ module.exports = function (app) {
     });
 
     app.post("/addcontact", function (req, res) {
+<<<<<<< HEAD
+        isValid = validatePhoneNumber(req.body.phone);
+        if (isValid) {
+            db.People.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                phone: req.body.phone,
+                email: req.body.email,
+                isVolunteer: req.body.isVolunteer,
+                message: req.body.message
+            })
+                .then(function (dbContact) {
+                    console.log(dbContact);
+                    res.redirect("confirmation")
+                });
+        } else {
+            res.status(400).jsonp({ error: 'Your phone number is invalid' });
+        }
+        
+=======
         console.log(req.body);
         db.People.create({
             firstName: req.body.firstName,
@@ -118,8 +142,9 @@ module.exports = function (app) {
                 // res.redirect("confirmation")
 
             });
+>>>>>>> test
     });
-
+    (event) => sweetAlert(event);
     app.get('/confirmation', function (req, res) {
         res.render("confirmation.handlebars", {});
     });
