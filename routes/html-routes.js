@@ -115,7 +115,7 @@ module.exports = function (app) {
             .then(function (dbContact) {
                 console.log(dbContact);
 
-                res.redirect("confirmation")
+                // res.redirect("confirmation")
 
             });
     });
