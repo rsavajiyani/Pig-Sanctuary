@@ -8,12 +8,7 @@
 // =============================================================
 var path = require("path");
 var db = require("../models");
-<<<<<<< HEAD
 var validatePhoneNumber = require("./validator");
-=======
-// import swal from 'sweetalert';
-
->>>>>>> test
 
 // Routes
 // =============================================================
