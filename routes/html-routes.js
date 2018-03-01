@@ -8,6 +8,7 @@
 // =============================================================
 var path = require("path");
 var db = require("../models");
+var validatePhoneNumber = require("./validator");
 
 // Routes
 // =============================================================
@@ -101,21 +102,24 @@ module.exports = function (app) {
     });
 
     app.post("/addcontact", function (req, res) {
-        console.log(req.body);
-        db.People.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phone: req.body.phone,
-            email: req.body.email,
-            isVolunteer: req.body.isVolunteer,
-            message: req.body.message
-        })
-            .then(function (dbContact) {
-                console.log(dbContact);
-
-                res.redirect("confirmation")
-
-            });
+        isValid = validatePhoneNumber(req.body.phone);
+        if (isValid) {
+            db.People.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                phone: req.body.phone,
+                email: req.body.email,
+                isVolunteer: req.body.isVolunteer,
+                message: req.body.message
+            })
+                .then(function (dbContact) {
+                    console.log(dbContact);
+                    res.redirect("confirmation")
+                });
+        } else {
+            res.status(400).jsonp({ error: 'Your phone number is invalid' });
+        }
+        
     });
 
     app.get('/confirmation', function (req, res) {
