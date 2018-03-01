@@ -11,7 +11,7 @@
                 <th> Interested In Volunteering </th>
                 <th> Message </th>
                 <th> Contacted </th>
-                <th> Contact </th>
+                {{!-- <th> Contact </th> --}}
             </tr>
 
             {{#each person}}
@@ -20,16 +20,25 @@
                     <td>{{this.firstName}}</td>
                     <td>{{this.lastName}}</td>
                     <td>{{this.phone}}</td>
-                    <td>{{this.email}}</td>
+                    <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
                     <td>{{this.isVolunteer}}</td>
                     <td>{{this.message}}</td>
-                    <td>{{this.contacted}}</td>
-                    <td>
+                    <form method="POST" action="/contact">
+                        <td>
+                            <input type="hidden" name="contact_email" type="text" value={{this.email}}>
+                            <select name="contacted" onchange="this.form.submit()">
+                                <option disabled selected value>{{this.contacted}}</option>
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        </td>
+                    </form>
+                    {{!-- <td>
                         <form method="POST" action="/contact">
-                                <input type="hidden" name="contact_id" type="text" value={{this.id}}>
-                                <button type="submit" class="btn btn-primary">Contact Me</button>
+                                <input type="hidden" name="contact_email" type="text" value={{this.email}}>
+                                <button type="submit"  class="btn btn-primary"><a href="mailto:{{this.email}}"></a>Contact Me</button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
             {{/each}}
         </table>

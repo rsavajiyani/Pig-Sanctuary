@@ -8,6 +8,8 @@
 // =============================================================
 var path = require("path");
 var db = require("../models");
+// import swal from 'sweetalert';
+
 
 // Routes
 // =============================================================
@@ -131,7 +133,7 @@ module.exports = function (app) {
             }
         }).then(function (dbPig) {
             console.log(dbPig);
-            res.redirect("pigpage");
+            res.redirect("admin");
         })
     });
 
@@ -149,11 +151,12 @@ module.exports = function (app) {
 
     app.post('/contact', function (req, res) {
         console.log('contact route hit');
+        // console.log('req:' + req.body);
         db.People.update({
-            contacted: true
+            contacted: req.body.contacted
         }, {
                 where: {
-                    id: req.body.contact_id
+                    email: req.body.contact_email
                 }
             }).then(function (dbContact) {
 
