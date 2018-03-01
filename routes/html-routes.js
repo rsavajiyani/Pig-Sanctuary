@@ -121,7 +121,7 @@ module.exports = function (app) {
         }
         
     });
-
+    (event) => sweetAlert(event);
     app.get('/confirmation', function (req, res) {
         res.render("confirmation.handlebars", {});
     });
