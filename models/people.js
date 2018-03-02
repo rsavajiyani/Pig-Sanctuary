@@ -1,54 +1,49 @@
 module.exports = function (sequelize, DataTypes) {
-    var Pigs = sequelize.define("Pigs", {
-        pigName: {
+    var People = sequelize.define("People", {
+        
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        pigAge: {
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        pigGender: {
+        phone: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        pigImage: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        pigColor: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+        isVolunteer: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         },
-        pigBio: {
+        message: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: true
         },
-        isAdopted: {
+        contacted: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    },
+    },    
         {
-            timestamps: false
+            timestamps: false,
         });
-    return Pigs;
+    return People;
 };

@@ -1,0 +1,138 @@
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Add Pigs</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/addpig" id = "addPigForm" method="POST" role="form">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" name="pigName" class="form-control" id="pigNameInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Age</label>
+                            <select class="form-control" name="pigAge" id="pigAgeInput">
+                                <option>Age</option>
+                                <option>Toddler</option>
+                                <option>Teenager</option>
+                                <option>Parent</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Gender</label>
+                            <select class="form-control" name="pigGender" id="pigGenderInput">
+                                <option>Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Image URL</label>
+                            <input type="text" class="form-control" name="pigImage" id="pigImgUrlInput">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Color</label>
+                            <select class="form-control" name="pigColor" id="pigColorInput">
+                                <option>Color</option>
+                                <option>Pink</option>
+                                <option>White</option>
+                                <option>Brown</option>
+                                <option>Gray</option>
+                                <option>Black</option>
+                                <option>Spots</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Bio</label>
+                            <input type="text" class="form-control" name="pigBio" id="pigBioInput" placeholder="">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-md" id="pig-submit-btn"> Add Pig</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Pig ID</th>
+                    <th>Pig Name</th>
+                    <th>Pig Age</th>
+                    <th>Pig Gender</th>
+                    <th>Pig Image URL</th>
+                    <th>Pig Color</th>
+                    <th>Pig Bio</th>
+                    <th>Pig Adopted</th>
+                    <th>Delete Pig</th>
+                    <th>Adopt Out Pig</th>
+                </tr>
+                {{#each pig}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.pigName}}</td>
+                        <td>{{this.pigAge}}</td>
+                        <td>{{this.pigGender}}</td>
+                        <td><img src="{{this.pigImage}}"></td>
+                        <td>{{this.pigColor}}</td>
+                        <td>{{this.pigBio}}</td>
+                        {{#if this.isAdopted}}
+                            <td>Yes</td>
+                        {{/if}}
+                        {{#unless this.isAdopted}}
+                            <td>No</td>
+                        {{/unless}}
+                        <td>
+                            
+                            <form method="POST" action="/deletepig?_method=DELETE" id="deletePigForm" role="form">
+                                <input type="hidden"  type="text">
+                                <button type="submit" name="pig_id" value={{this.id}} class="btn btn-primary">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="/adopt" id = "adoptPigForm" role = "form">
+                                <input type="hidden" name="pig_id" type="text" value={{this.id}}>
+                                <button type="submit" class="btn btn-primary">Adopt</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p><a href="/pigpage">Pig Page</a> | <a href="/viewcontacts">Contact/Volunteer List</a></p>
+        </div>
+    </div>
+
+    <script>
+        $('#addPigForm').one('submit', function(e) {
+            e.preventDefault();
+            swal("Success!", "You Added The Pig!", "success").then(() => {
+                console.log($('#addPigForm'));
+                $('#addPigForm').submit();
+            })    
+        })
+
+        $('#deletePigForm').one('submit', function(f) {
+            f.preventDefault();
+            swal("Success!", "You Deleted The Pig!", "success").then(() => {
+                console.log($('#deletePigForm'));
+                $('#deletePigForm').submit();
+                })
+            })
+
+        $('#adoptPigForm').one('submit', function(g) {
+                g.preventDefault();
+                swal("Success!", "Pig Adopted Out", "success").then(() => {
+                    console.log($('#adoptPigForm'));
+                    $('#adoptPigForm').submit();
+                })
+            })
+    </script>
+</body>
