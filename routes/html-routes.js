@@ -117,11 +117,18 @@ module.exports = function (app) {
                     res.redirect("confirmation")
                 });
         } else {
-            res.status(400).jsonp({ error: 'Your phone number is invalid' });
+            res.redirect("sweetalert");
+            // res.status(400).jsonp({ error: 'Your phone number is invalid' });
         }
         
     });
+
+    app.get("/sweetalert", function (req, res) {
+        res.render("sweetalert", {});
+    });
+
     (event) => sweetAlert(event);
+
     app.get('/confirmation', function (req, res) {
         res.render("confirmation.handlebars", {});
     });

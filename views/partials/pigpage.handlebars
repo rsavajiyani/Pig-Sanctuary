@@ -23,7 +23,7 @@
             {{#each pig}} {{#unless this.isAdopted}}
             <div class="col-sm-6 col-md-3 text-center">
                 <div class="thumbnail pig-container">
-                    <img src="{{this.pigImage}}" alt=>
+                    <img src="{{this.pigImage}}">
                     <div class="caption">
                         <h3>{{this.pigName}}</h3>
                         <div class="bio">{{this.pigBio}}</div>
@@ -54,9 +54,9 @@
         </select>
         <select name="pigAge" id="pigAge">
             <option disabled selected value>Age</option>
-            <option>Toddler</option>
-            <option>Teenager</option>
-            <option>Parent</option>
+            <option>Toddler 1-5</option>
+            <option>Teenager 5-10</option>
+            <option>Parent 10+</option>
         </select>
         <button type="submit" onClick="dropdownValidation()" class="btn btn-primary">Search</button>
     </form>

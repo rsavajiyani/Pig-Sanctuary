@@ -7,7 +7,6 @@
                 </div>
                 <div class="panel-body">
                     <form action="/addpig" id = "addPigForm" method="POST" role="form">
-                    
                         <div class="form-group">
                             <label for="">Name</label>
                             <input type="text" name="pigName" class="form-control" id="pigNameInput" placeholder="">
@@ -77,12 +76,12 @@
                         <td>{{this.pigName}}</td>
                         <td>{{this.pigAge}}</td>
                         <td>{{this.pigGender}}</td>
-                        <td>{{this.pigImage}}</td>
+                        <td><img src="{{this.pigImage}}"></td>
                         <td>{{this.pigColor}}</td>
                         <td>{{this.pigBio}}</td>
                         <td>{{this.isAdopted}}</td>
                         <td>
-                            <form method="POST" onsubmit = 'swal("Good job!", "You clicked the button!", "success");' action="/deletepig?_method=DELETE">
+                            <form method="POST" action="/deletepig?_method=DELETE" id = "deletePigForm" role="form">
                                 <input type="hidden"  type="text">
                                 <button type="submit" name="pig_id" value={{this.id}} class="btn btn-primary">Delete</button>
                             </form>
@@ -108,10 +107,18 @@
     <script>
         $('#addPigForm').one('submit', function(e) {
             e.preventDefault();
-            swal("Good Job!", "You Added The Pig!", "success").then(() => {
+            swal("Success!", "You Added The Pig!", "success").then(() => {
                 console.log($('#addPigForm'));
                 $('#addPigForm').submit();
             })    
         })
+
+        $('#deletePigForm').one('submit', function (e) {
+                e.preventDefault();
+                swal("Success!", "You Deleted The Pig!", "success").then(() => {
+                    console.log($('#deletePigForm'));
+                    $('#deletePigForm').submit();
+                })
+            })
     </script>
 </body>
