@@ -44,24 +44,16 @@
                     </div>
                 </div>
 
-                <div class="modal" role="dialog" id="contact-submit-btn">
-                    {{!-- <div class="modal-dialog" role="document"> --}}
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Congratulations</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Thank you for contacting us. You successfully submitted your contact information. We will respond within 72 hours.</p>
-                            </div>
-                            {{!-- <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
+    <script>
+        $('#addContactForm').one('submit', function(e) {
+            e.preventDefault();
+            swal("Thank you for contacting us.", "You successfully submitted your contact information. We will respond within 72 hours.", "success").then(() => {
+                console.log($('#addContactForm'));
+                $('#addContactForm').submit();
+            })    
+        })
+    </script>
 </body>
