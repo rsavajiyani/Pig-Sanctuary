@@ -158,14 +158,15 @@ module.exports = function (app) {
     })
 });
 
+    
+
     app.post('/contact', function (req, res) {
         console.log('contact route hit');
-        // console.log('req:' + req.body);
         db.People.update({
-            contacted: req.body.contacted
+            contacted: true
         }, {
                 where: {
-                    email: req.body.contact_email
+                    id: req.body.contact_id
                 }
             }).then(function (dbContact) {
 
