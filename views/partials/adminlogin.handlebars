@@ -8,13 +8,9 @@
                     <div class="panel-body">
                         <form role="form">
                             <fieldset>
-                                
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" id="password" type="password" value="">
                                 </div>
-                                
-                                <!-- Change this to a button or input when using this as a form -->
-                                
                                 <input type="button" id="b" value="Login">
                             </fieldset>
                         </form>
@@ -28,14 +24,15 @@
         </div>
 
 <script>
+
+    //basic 'password protection'; not secure as it is visible client-side, but this is a placeholder until we can get passport.js working
     $("#b").click(function () {
             var password = "pigministrator";
             if ($("#password").val() !== password) {
                 $("#err").text("Incorrect password");
             }
             else {
-            
-            window.location.href = "https://secure-refuge-93657.herokuapp.com/admin";
+                window.location.href = "https://secure-refuge-93657.herokuapp.com/admin";
             }
         });
 </script>

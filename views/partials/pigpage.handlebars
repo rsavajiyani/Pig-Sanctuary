@@ -17,28 +17,31 @@
         <div class="row">
             <center>
                 <div class='pig-header'>
-                    <h1>Adopt Us </h1>
+                    <h1>Adopt Us</h1>
                 </div>
             </center>
+            {{!-- this for-each loop lists only the pigs who have yet to be adopted(their isAdopted boolean value is false) --}}
             {{#each pig}} {{#unless this.isAdopted}}
-            <div class="col-sm-6 col-md-3 text-center">
-                <div class="thumbnail pig-container">
-                    <img src="{{this.pigImage}}">
-                    <div class="caption">
-                        <h3>{{this.pigName}}</h3>
-                        <div class="bio">{{this.pigBio}}</div>
-                        <br/>
-                        <form method="POST" action="/adoptcontact">
-                            <input type="hidden" name="pig_id" type="text" value={{this.id}}>
-                            <button type="submit" class="btn btn-primary">Adopt Me</button>
-                        </form>
+                <div class="col-sm-6 col-md-3 text-center">
+                    <div class="thumbnail pig-container">
+                        <img src="{{this.pigImage}}">
+                        <div class="caption">
+                            <h3>{{this.pigName}}</h3>
+                            <div class="bio">{{this.pigBio}}</div>
+                            <br/>
+                            <form method="POST" action="/adoptcontact">
+                                <input type="hidden" name="pig_id" type="text" value={{this.id}}>
+                                <button type="submit" class="btn btn-primary">Adopt Me</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             {{/unless}}{{/each}}
         </div>
     </div>
-    <form method="POST" action="/search">
+    {{!-- calls the /search route and passes in the user's dropdown selection as request parameters
+    allows the user to refine which pigs show up on the pig page --}}
+    <form method="POST" id = "searchPigForm" action="/search">
         <select name="pigGender" id="pigGender">
             <option disabled selected value>Gender</option>
             <option>M</option>
@@ -61,6 +64,7 @@
         <button type="submit" onClick="dropdownValidation()" class="btn btn-primary">Search</button>
     </form>
     <script>
+            //dropdown validation function that ensures the user has entered search parameters
             function dropdownValidation() {
                 var pigGender = document.getElementById('pigGender').value;
                 var pigAge = document.getElementById('pigAge').value;
@@ -70,7 +74,14 @@
 
                 
                 if(pigGender == "" && pigAge == "" && pigColor == "") {
-                    alert("no values selected");
+                    $('#searchPigForm').one('submit', function (g) {
+                        g.preventDefault();
+                        swal("Error!", "You didn't enter any search parameters!", "error").then(() => {
+                            console.log($('#searchPigForm'));
+                            $('#searchPigForm').submit();
+                        })
+                    })
+                    
                     return true;
                 }
                 else {

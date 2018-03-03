@@ -14,40 +14,47 @@
                 <th></th>
             </tr>
 
-            
+            {{!-- loops over every "person" object in the "people" table --}}
             {{#each person}}
-            <tr>
-                <td>{{this.id}}</td>
-                <td>{{this.firstName}}</td>
-                <td>{{this.lastName}}</td>
-                <td>{{this.phone}}</td>
-                <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
-                 {{#if this.isVolunteer}}
-                    <td>Yes</td>
-                {{/if}} 
-                {{#unless this.isVolunteer}}
-                <td>No</td>
-                {{/unless}}
-                <td>{{this.message}}</td>
-                {{#if this.contacted}}
-                    <td>Yes</td>
-                {{/if}}
-                {{#unless this.contacted}}
-                    <td>No</td>
-                {{/unless}}
-                
-                {{#unless this.contacted}}
-                    <td>
-                        <form method="POST" action="/contact">
-                            <input type="hidden" name="contact_id" type="text" value={{this.id}}>
-                            <button type="submit" class="btn btn-primary">Contact Me</button>
-                        </form>
-                    </td>
-                {{/unless}}
-                {{#if this.contacted}}
-                    <td></td>
-                {{/if}}
-            </tr>
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.firstName}}</td>
+                    <td>{{this.lastName}}</td>
+                    <td>{{this.phone}}</td>
+                    <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
+
+                    {{#if this.isVolunteer}}
+                        <td>Yes</td>
+                    {{/if}} 
+
+                    {{#unless this.isVolunteer}}
+                        <td>No</td>
+                    {{/unless}}
+
+                    <td>{{this.message}}</td>
+
+                    {{#if this.contacted}}
+                        <td>Yes</td>
+                    {{/if}}
+
+                    {{#unless this.contacted}}
+                        <td>No</td>
+                    {{/unless}}
+                    
+                    {{!-- only displays the contact me button if the person has yet to be contacted(i.e. their contacted boolean value is false) --}}
+                    {{#unless this.contacted}}
+                        <td>
+                            <form method="POST" action="/contact">
+                                <input type="hidden" name="contact_id" type="text" value={{this.id}}>
+                                <button type="submit" class="btn btn-primary">Contact Me</button>
+                            </form>
+                        </td>
+                    {{/unless}}
+                    
+                    {{#if this.contacted}}
+                        <td></td>
+                    {{/if}}
+                </tr>
             {{/each}}
         </table>
     </div>

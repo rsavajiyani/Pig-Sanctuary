@@ -36,16 +36,8 @@ app.set('views', path.join(__dirname, 'views/partials')
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
+require("./routes/routes.js")(app);
 
-// Here we introduce HTML routing to serve different HTML files
-require("./routes/html-routes.js")(app);
-
-// Starts the server to begin listening
-// =============================================================
-// app.listen(PORT, function () {
-//     console.log("App listening on PORT " + PORT);
-// });
 
 db.sequelize.sync().then(function () {
     app.listen(PORT);

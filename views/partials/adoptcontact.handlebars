@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2">
                     <div class="form-area">
+                        {{!-- this form calls the /addcontact route, stores the user's contact information in the people table--}}
                         <form action="/addcontact" method="POST" role="form">
                             <br style="clear:both">
                             <h3 style="margin-bottom: 25px; text-align: center;">Contact Us</h3>
@@ -27,15 +28,12 @@
                                 <input type="checkbox" name="isVolunteer" class="form-control" id="isVolunteerInput" value="1">
                                 <label for="isVolunteerInput">Check here if you interested in volunteering.</label>
                             </div>
+                            
+                            {{!-- pre-populates the message input with a string indicating interest in adopting the pig the user clicked on --}}
                             {{#each pig}}
-                            <div class="form-group">
-                                <input class="form-control" name="message" type="textarea" id="messageInput" placeholder="Message" maxlength="500" rows="7" value="Hello! I am interested in adopting {{this.pigName}}."></input> 
-                                
-                                {{!--
-                                <span class="help-block">
-                                    <p id="characterLeft" class="help-block ">You have reached the limit</p>
-                                </span> --}}
-                            </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="message" type="textarea" id="messageInput" placeholder="Message" maxlength="500" rows="7" value="Hello! I am interested in adopting {{this.pigName}}."></input> 
+                                </div>
                             {{/each}}
 
                             <button type="submit" id="contact-submit-btn" class="btn btn-primary pull-right">Submit Form</button>
