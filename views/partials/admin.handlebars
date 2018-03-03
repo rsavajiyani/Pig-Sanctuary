@@ -67,8 +67,8 @@
                     <th>Pig Color</th>
                     <th>Pig Bio</th>
                     <th>Pig Adopted</th>
-                    <th>Delete Pig</th>
                     <th>Adopt Out Pig</th>
+                    <th>Delete Pig</th>
                 </tr>
                 
                 {{#each pig}}
@@ -87,15 +87,6 @@
                             <td>No</td>
                         {{/unless}}
 
-                        
-                        <td>
-                            {{!-- this form calls the deletepig route as soon as the delete button is hit, using method-override --}}
-                            <form method="POST" action="/deletepig?_method=DELETE" id="deletePigForm" role="form">
-                                <input type="hidden" name="pig_id" value={{this.id}} type="text">
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </form>
-                        </td>
-
                         {{!-- only displays the 'Adopt' button if the isAdopted variable is false --}}
                         {{#unless this.isAdopted}}
                             <td>
@@ -110,6 +101,14 @@
                         {{#if this.isAdopted}}
                             <td></td>
                         {{/if}}
+
+                        <td>
+                            {{!-- this form calls the deletepig route as soon as the delete button is hit, using method-override --}}
+                            <form method="POST" action="/deletepig?_method=DELETE" id="deletePigForm" role="form">
+                                <input type="hidden" name="pig_id" value={{this.id}} type="text">
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 {{/each}}
             </table>

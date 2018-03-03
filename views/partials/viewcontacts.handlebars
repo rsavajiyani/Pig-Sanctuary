@@ -12,6 +12,7 @@
                 <th> Message </th>
                 <th> Contacted </th>
                 <th></th>
+                <th> Delete </th>
             </tr>
 
             {{!-- loops over every "person" object in the "people" table --}}
@@ -50,10 +51,18 @@
                             </form>
                         </td>
                     {{/unless}}
-                    
+
                     {{#if this.contacted}}
                         <td></td>
                     {{/if}}
+
+                    <td>
+                        {{!-- this form calls the deletepig route as soon as the delete button is hit, using method-override --}}
+                        <form method="POST" action="/deleteperson?_method=DELETE" id="deletePersonForm" role="form">
+                            <input type="hidden" name="person_id" value={{this.id}} type="text">
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {{/each}}
         </table>

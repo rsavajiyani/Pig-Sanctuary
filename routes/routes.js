@@ -43,6 +43,19 @@ module.exports = function (app) {
         });
     });
 
+    app.delete("/deleteperson", function (req, res) {
+        // We just have to specify which pig we want to destroy with "where"
+        // console.log("delete route hit");
+        // console.log(req);
+        db.People.destroy({
+            where: {
+                id: req.body.person_id
+            }
+        }).then(function (dbContact) {
+            res.redirect("/viewcontacts");
+        });
+    });
+
     //adoptedpigs route fetches all pigs in the table 
     //on the adoptedpigs handlebars page, if/unless handlebars helpers are used to display only the adopted pigs
     app.get("/adoptedpigs", function (req, res) {
