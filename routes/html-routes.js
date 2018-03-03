@@ -162,8 +162,6 @@ module.exports = function (app) {
         })
     });
 
-
-
     app.post('/contact', function (req, res) {
         console.log('contact route hit');
         db.People.update({
@@ -206,4 +204,7 @@ module.exports = function (app) {
         res.render("volunteer", {});
     });
 
+    app.get("/adminlogin", function (req, res) {
+        res.render("adminlogin", {});
+    });
 };
