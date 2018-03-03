@@ -1,11 +1,12 @@
 <body>
-    <div class>
+    <div class="container">
         <div class="row">
             <center>
                 <div class='pig-header'>
                     <h1>Adopt Us</h1>
                 </div>
             </center>
+            <div class = "col-sm-12">
             {{!-- this for-each loop lists only the pigs who have yet to be adopted(their isAdopted boolean value is false) --}}
             {{#each pig}} {{#unless this.isAdopted}}
                 <div class="col-sm-6 col-md-3 text-center">
@@ -23,8 +24,9 @@
                     </div>
                 </div>
             {{/unless}}{{/each}}
+            </div>
         </div>
-    </div>
+    
     {{!-- calls the /search route and passes in the user's dropdown selection as request parameters
     allows the user to refine which pigs show up on the pig page --}}
     <form method="POST" id = "searchPigForm" action="/search">
@@ -49,6 +51,7 @@
         </select>
         <button type="submit" onClick="dropdownValidation()" class="btn btn-primary">Search</button>
     </form>
+    </div>
     <script>
             //dropdown validation function that ensures the user has entered search parameters
             function dropdownValidation() {
